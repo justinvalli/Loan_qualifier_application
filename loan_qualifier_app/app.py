@@ -111,6 +111,10 @@ def save_qualifying_loans(qualifying_loans):
     # @TODO: Complete the usability dialog for savings the CSV Files.
     # YOUR CODE HERE!
 
+    # if len[bank_data_filtered] > 0 (if there is at least one qualifying loan)
+    # ask user if they want to save the csv file containing qualifying loans
+    # if user says yes, then you ask the for a file path and save to the file path, if they say no then exit and say thank you
+    # else, print sorry you don't qualify for any loans at this time, goodbye, then exit
 
 def run():
     """The main function for running the script."""
