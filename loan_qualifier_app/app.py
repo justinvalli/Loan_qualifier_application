@@ -123,14 +123,13 @@ def save_qualifying_loans(qualifying_loans):
             # Set the output header, to only include appropriate infomration for the user
             header = ["lender","interest rate"]
 
-        output_path = Path(csv_file_path) #Path Function
-        with open(output_path, 'w', newline='') as csvfile:
-            csvwriter = csv.writer(csvfile)
+            output_path = Path(csv_file_path) #Path Function
+            with open(output_path, 'w', newline='') as csvfile:
+                csvwriter = csv.writer(csvfile)
             csvwriter.writerow(header)
             for loan in qualifying_loans:
                 csvwriter.writerow([loan [0],loan[-1]]) #Cleaned up the .csv file by removing extraneous information
-                csvwriter.writerow(loan)
-        sys.exit("File saved, thank you.")
+            sys.exit("File saved, thank you.")
 
             # with open('loans.csv', 'w', newline='') as f:
             #     writer = csv.writer(f)
@@ -139,8 +138,11 @@ def save_qualifying_loans(qualifying_loans):
             #         writer.writerow ([loan[0], loan[-1]])
             # sys.exit(f"File saved. Thank you.")
     
-    elif save_file == "N":
-        sys.exit(f"Thank you.")
+        else: 
+            sys.exit(f"Thank you.")
+
+    else: sys.exit(f"Sorry, you don't qualify for any loans at this time.")
+    #Exit
 
     # if len[bank_data_filtered] > 0 (if there is at least one qualifying loan)
     # ask user if they want to save the csv file containing qualifying loans
@@ -166,3 +168,4 @@ def run():
 
 if __name__ == "__main__":
     fire.Fire(run)
+
