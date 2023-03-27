@@ -1,0 +1,50 @@
+   19  cd Users
+   20  cd C:Users
+   21  cd justi
+   22  cd challenge_2
+   23  git add .
+   24  git commit -m "$challenge_2"
+   25  git config --global user.name "Justin Valli"
+   26  git config --global user.name "justinvalli"
+   27  git config --global user.email "jkv32@cornell.edu"
+   28  git commit -m "$challenge_2"
+   29* cd 
+   30  git push
+   31  cd C:Users
+   32  cd justi
+   33  cd challenge_2
+   34  git status
+   35  git add .
+   36  git commit -m "challenge_2 - save the .csv file"
+   37  git push
+   38  cd C:Users
+   39  cd justi
+   40  cd challenge_2
+   41  git add .
+   42  git commit -m "challenge_2 - completed usability dialogue"
+   43  git push
+   44* 
+   45  cd C:Users
+   46  cd justi
+   47  cd challenge_2
+   48  git add .
+   49  git commit -m "challenge_2 - removed irrelevant information from user .csv file - only saved bank name and interest rate"
+   50  git push
+   51  cd C:Users
+   52  cd justi
+   53  git add .
+   54  cd C:Users
+   55  cd justi
+   56  cd challenge_2
+   57  git add .
+   58  git commit -m "challenge_2 - improved error handling"
+   59  git push
+   60  git add .
+   61  cd C:Users
+   62  cd justi
+   63  cd challenge_2
+   64  git add .
+   65  git commit -m "challenge_2 - updated comments"
+   66  git push
+   67  terminal_history.txt
+   68  history 50 > terminal_history.txt
