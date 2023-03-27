@@ -111,21 +111,39 @@ def save_qualifying_loans(qualifying_loans):
         qualifying_loans (list of lists): The qualifying bank loans.
     """
     # @TODO: Complete the usability dialog for savings the CSV Files.
-    # YOUR CODE HERE!
 
-    #Function in order to save the csv file csv_file_path (hard-coding location to save the file)
+    if len(qualifying_loans) > 0:
+        save_file = questionary.text("Would you like to save the qualifying loans as a loans.csv file? Y/N").ask()
 
-    csv_file_path = "C:/Users/justi/challenge_2/loan_qualifier_app/data/qloans.csv"
-    output_path = Path(csv_file_path) #Path Function
-    with open(output_path, 'w', newline='') as csvfile:
-        cswriter = csv.writer(csvfile)
-        for loan in qualifying_loans:
-            cswriter.writerow(loan)
+        if save_file == "Y":
+            csv_file_path = questionary.text("Enter a file path to where you want to store the loans.csv file.").ask()
+            #save a .csv file as "loan.csv" that prints to a .csv file from bank_data_filtered list
+            #save the loan.csv file to the file path that the user specified
+
+            # Set the output header, to only include appropriate infomration for the user
+            header = ["lender","interest rate"]
+
+        output_path = Path(csv_file_path) #Path Function
+        with open(output_path, 'w', newline='') as csvfile:
+            csvwriter = csv.writer(csvfile)
+            csvwriter.writerow(header)
+            for loan in qualifying_loans:
+                csvwriter.writerow(loan)
+        sys.exit("File saved, thank you.")
+
+            # with open('loans.csv', 'w', newline='') as f:
+            #     writer = csv.writer(f)
+            #     writer.writerow (["lender","interest rate"])
+            #     for loan in qualifying_loans:
+            #         writer.writerow ([loan[0], loan[-1]])
+            # sys.exit(f"File saved. Thank you.")
+    
+    elif save_file == "N":
+        sys.exit(f"Thank you.")
 
     # if len[bank_data_filtered] > 0 (if there is at least one qualifying loan)
     # ask user if they want to save the csv file containing qualifying loans
-    # if user says yes, then you ask the for a file path and save to the file path, if they say no then exit and say thank you
-    # else, print sorry you don't qualify for any loans at this time, goodbye, then exit
+            
 
 def run():
     """The main function for running the script."""
