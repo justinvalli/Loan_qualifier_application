@@ -39,15 +39,11 @@ pip install fire questionary csv pathlib
 
 python app.py
 
-![1](python_app_in_bash.png)
-
 2. Enter the required information prompted by the program as demonstrated below.
 
 ![2](what_is_your_credit_score.png)
 
 ![3](what_is_your_total_monthly_income.png)
-
-![4](enter_file_path.png)
 
 
 3. The application will output any qualifying loans based on the entered information. If there are any qualifying loans, the user can choose to save them to a CSV file.
