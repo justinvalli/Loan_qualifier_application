@@ -6,11 +6,11 @@ This is a command line application to match applicants with qualifying loans.
 Example:
     $ python app.py
 """
+
 import sys
 import fire
 import questionary
-import csv
-# Added import csv to use csv writer function
+import csv  
 from pathlib import Path
 
 from qualifier.utils.fileio import load_csv
@@ -32,6 +32,8 @@ def load_bank_data():
     Returns:
         The bank data from the data rate sheet CSV file.
     """
+# The below will prompt user to enter a file path to a rate sheet containing rate data.
+# If they provide a path that does not exist to a .csv file, the program will exit and provide the message "Oops! Can't find this path."
 
     csvpath = questionary.text("Enter a file path to a rate-sheet (.csv):").ask()
     csvpath = Path(csvpath)
@@ -128,15 +130,9 @@ def save_qualifying_loans(qualifying_loans):
                 csvwriter = csv.writer(csvfile)
             csvwriter.writerow(header)
             for loan in qualifying_loans:
-                csvwriter.writerow([loan [0],loan[-1]]) #Cleaned up the .csv file by removing extraneous information
+                csvwriter.writerow([loan [0],loan[-1]]) 
+                #Cleaned up the .csv file by removing extraneous information
             sys.exit("File saved, thank you.")
-
-            # with open('loans.csv', 'w', newline='') as f:
-            #     writer = csv.writer(f)
-            #     writer.writerow (["lender","interest rate"])
-            #     for loan in qualifying_loans:
-            #         writer.writerow ([loan[0], loan[-1]])
-            # sys.exit(f"File saved. Thank you.")
     
         else: 
             sys.exit(f"Thank you.")
