@@ -128,6 +128,7 @@ def save_qualifying_loans(qualifying_loans):
             csvwriter = csv.writer(csvfile)
             csvwriter.writerow(header)
             for loan in qualifying_loans:
+                csvwriter.writerow([loan [0],loan[-1]]) #Cleaned up the .csv file by removing extraneous information
                 csvwriter.writerow(loan)
         sys.exit("File saved, thank you.")
 
