@@ -9,6 +9,8 @@ Example:
 import sys
 import fire
 import questionary
+import csv
+# Added import csv to use csv writer function
 from pathlib import Path
 
 from qualifier.utils.fileio import load_csv
@@ -110,6 +112,15 @@ def save_qualifying_loans(qualifying_loans):
     """
     # @TODO: Complete the usability dialog for savings the CSV Files.
     # YOUR CODE HERE!
+
+    #Function in order to save the csv file csv_file_path (hard-coding location to save the file)
+
+    csv_file_path = "C:/Users/justi/challenge_2/loan_qualifier_app/data/qloans.csv"
+    output_path = Path(csv_file_path) #Path Function
+    with open(output_path, 'w', newline='') as csvfile:
+        cswriter = csv.writer(csvfile)
+        for loan in qualifying_loans:
+            cswriter.writerow(loan)
 
     # if len[bank_data_filtered] > 0 (if there is at least one qualifying loan)
     # ask user if they want to save the csv file containing qualifying loans
