@@ -14,6 +14,7 @@ import csv
 from pathlib import Path
 
 from qualifier.utils.fileio import load_csv
+from qualifier.utils.fileio import save_csv 
 
 from qualifier.utils.calculators import (
     calculate_monthly_debt_ratio,
@@ -114,30 +115,39 @@ def save_qualifying_loans(qualifying_loans):
     """
     # @TODO: Complete the usability dialog for savings the CSV Files.
 
-    if len(qualifying_loans) > 0:
-        save_file = questionary.text("Would you like to save the qualifying loans as a loans.csv file? Y/N").ask()
+    if not qualifying_loans:
+        sys.exit("Sorry, there are no qualifying loans!")
+    saveFile = questionary.confirm("Would you like to save the qualifying loans?").ask()
+    if saveFile:
+        csvpath = questionary.text(
+            "Please enter a filepath for the saved data: (qualifying_loans.csv)"
+        ).ask()
+        save_csv(Path(csvpath), qualifying_loans)
 
-        if save_file == "Y":
-            csv_file_path = questionary.text("Enter a file path to where you want to store the loans.csv file.").ask()
+    #if len(qualifying_loans) > 0:
+        #save_file = questionary.text("Would you like to save the qualifying loans as a loans.csv file? Y/N").ask()
+
+        #if save_file == "Y":
+            #csv_file_path = questionary.text("Enter a file path to where you want to store the loans.csv file.").ask()
             #save a .csv file as "loan.csv" that prints to a .csv file from bank_data_filtered list
             #save the loan.csv file to the file path that the user specified
 
             # Set the output header, to only include appropriate infomration for the user
-            header = ["lender","interest rate"]
+            #header = ["lender","interest rate"]
 
-            output_path = Path(csv_file_path) #Path Function
-            with open(output_path, 'w', newline='') as csvfile:
-                csvwriter = csv.writer(csvfile)
-            csvwriter.writerow(header)
-            for loan in qualifying_loans:
-                csvwriter.writerow([loan [0],loan[-1]]) 
+            #output_path = Path(csv_file_path) #Path Function
+            #with open(output_path, 'w', newline='') as csvfile:
+                #csvwriter = csv.writer(csvfile)
+            #csvwriter.writerow(header)
+            #for loan in qualifying_loans:
+                #csvwriter.writerow([loan [0],loan[-1]]) 
                 #Cleaned up the .csv file by removing extraneous information
-            sys.exit("File saved, thank you.")
+            #sys.exit("File saved, thank you.")
     
-        else: 
-            sys.exit(f"Thank you.")
+        #else: 
+            #sys.exit(f"Thank you.")
 
-    else: sys.exit(f"Sorry, you don't qualify for any loans at this time.")
+    #else: sys.exit(f"Sorry, you don't qualify for any loans at this time.")
     #Exit
 
     # if len[bank_data_filtered] > 0 (if there is at least one qualifying loan)
